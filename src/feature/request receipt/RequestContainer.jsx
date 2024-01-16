@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
 import HeaderEmail from "../../layouts/HeaderEmail";
+import { useNavigate } from "react-router-dom";
 
 const RequestContainer = () => {
   const [inputValue, setInputValue] = useState("");
-
+  const navigate = useNavigate();
   return (
     <div className="w-[2160px] h-[3840px] bg-[#363636] flex flex-col  items-center p-0">
       <HeaderEmail />

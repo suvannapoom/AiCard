@@ -10,6 +10,7 @@ import card52 from "../assets/card52.png";
 import card61 from "../assets/card61.png";
 import card62 from "../assets/card62.png";
 import * as paymentService from "../api/payment-api";
+
 const ProductContext = createContext();
 export const initialStand = [
   {
@@ -83,6 +84,7 @@ export default function ProductContextProvider({ children }) {
   const [orderNo, setOrderNo] = useState(null);
   const [isNavigateToProductPageAgin, setIsNavigateToProductPageAgin] =
     useState(false);
+
   const handleSendCardList = async (cardList) => {
     try {
       const res = await paymentService.payment(cardList);

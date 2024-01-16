@@ -4,6 +4,7 @@ import HeaderSum from "../../layouts/HeaderSum";
 import SummaryCard from "./SummaryCard";
 import { useProduct } from "../../context/ProductContextProvider";
 import Iframe from "./Iframe";
+import { useEffect } from "react";
 
 export default function SummaryContainer() {
   const navigate = useNavigate();
@@ -21,6 +22,23 @@ export default function SummaryContainer() {
       amount: el.amount,
     };
     return newData;
+  }, []);
+
+  useEffect(() => {
+    const handleMessage = (event) => {
+      const res =
+        "Transaction is completed, please do payment inquiry request for full payment information.";
+      if (event.data.paymentResult?.respDesc == res) {
+        console.log(event.data);
+        setPaymentUrl(null);
+        navigate("/ordercomplete");
+      }
+    };
+    window.addEventListener("message", handleMessage);
+
+    return () => {
+      window.removeEventListener("message", handleMessage);
+    };
   }, []);
   return (
     <div

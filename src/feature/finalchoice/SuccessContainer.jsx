@@ -1,10 +1,18 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import success from "../../assets/success.png";
 import { useNavigate } from "react-router-dom";
 import Headerlogo from "../../layouts/Headerlogo";
 
 const SuccessContainer = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      navigate("/");
+    }, 30000); // 30000 milliseconds = 30 seconds
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
   const [isNavigateToProductPageAgin, setIsNavigateToProductPageAgin] =
     useState(false);
 
@@ -34,7 +42,6 @@ const SuccessContainer = () => {
             background:
               "linear-gradient(98deg, #FC904E 43.67%, #FF3450 81.09%, #FF00F8 118.51%)",
             boxShadow: "0px 4px 8px 3px rgba(0, 0, 0, 0.25)",
-            fontStyle: "Bebas Neue",
           }}
         >
           Buy again

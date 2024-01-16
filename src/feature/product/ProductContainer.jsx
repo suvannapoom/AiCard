@@ -9,7 +9,6 @@ import ProductStandVersion from "./ProductStandVersion";
 import { formatPrice } from "../../utils/formatprice";
 import { sumPrice } from "../../utils/sumprice";
 import { useEffect, useState } from "react";
-import Footer from "../../layouts/Footer";
 
 export default function ProductContainer() {
   const navigate = useNavigate();
@@ -43,10 +42,10 @@ export default function ProductContainer() {
 
   const handleSelect = (e, i) => {
     setSelect(i);
+    handleSubmit();
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     const newData = [...stand];
     const result = newData.filter((el, i) => select === i);
     if (result.length <= 0) return;
@@ -57,7 +56,7 @@ export default function ProductContainer() {
     const productDetail = { result, totalPrice: formatTotalPrice };
 
     setAllProduct(productDetail);
-    // navigate("/summary");
+    navigate("/summary");
   };
 
   const totalPrice = sumPrice(product);
@@ -128,7 +127,7 @@ export default function ProductContainer() {
           </div>
         </div>
         <div className="flex justify-end items-center h-screen space-x-48">
-          <button
+          {/* <button
             className="text-[130px] text-white rounded-[100px] mb-96"
             style={{
               width: "500px",
@@ -141,7 +140,7 @@ export default function ProductContainer() {
             }}
           >
             NEXT
-          </button>
+          </button> */}
         </div>
       </form>
     </div>

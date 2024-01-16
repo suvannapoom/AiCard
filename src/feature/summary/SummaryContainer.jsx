@@ -10,7 +10,7 @@ export default function SummaryContainer() {
   const navigate = useNavigate();
   const { allProduct, handleSendCardList, paymentUrl, setPaymentUrl } =
     useProduct();
-
+  console.log(setPaymentUrl, "------------------url");
   const { result, totalPrice } = allProduct;
   const handleClose = () => {
     setPaymentUrl(null);
@@ -29,7 +29,6 @@ export default function SummaryContainer() {
       const res =
         "Transaction is completed, please do payment inquiry request for full payment information.";
       if (event.data.paymentResult?.respDesc == res) {
-        console.log(event.data);
         setPaymentUrl(null);
         navigate("/ordercomplete");
       }
@@ -62,7 +61,7 @@ export default function SummaryContainer() {
           boxShadow: "0px 4px 8px 3px rgba(0, 0, 0, 0.25)",
         }}
       >
-        NEXT
+        PAY NOW
       </button>
 
       {paymentUrl && (

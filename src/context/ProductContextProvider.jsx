@@ -88,7 +88,10 @@ export default function ProductContextProvider({ children }) {
   const handleSendCardList = async (cardList) => {
     try {
       const res = await paymentService.payment(cardList);
-
+      console.log(
+        res.data.responsePaymentData.url,
+        "-----------------------res.data.responsePaymentData.url"
+      );
       if (res.data.orderNumber) {
         setOrderNo(res.data.orderNumber);
       }

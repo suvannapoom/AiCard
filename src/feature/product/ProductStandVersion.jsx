@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { HiOutlineMinus, HiPlus } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export default function ProductStandVersion({
   name,
   price,
-  onClickPlus,
-  onClickNe,
   amount,
   imgLeft,
   imgRight,
@@ -15,6 +14,13 @@ export default function ProductStandVersion({
   index,
   select,
 }) {
+  const navigate = useNavigate();
+
+  // const handleButtonClick = () => {
+  //   handleSelect(index);
+  //   navigate("/summary");
+  // };
+
   return (
     <div
       className={`text-[38px] mx-auto flex flex-col justify-center items-center pb-6
@@ -72,7 +78,9 @@ export default function ProductStandVersion({
             ? "bg-gray-500"
             : "bg-gradient-to-r from-orange-400 via-red-500 to-pink-600"
         }`}
-        onClick={(e) => handleSelect(e, index)}
+        onClick={(e) => {
+          handleSelect(e, index);
+        }}
       >
         {select === index ? "Selected" : "Select"}
       </button>

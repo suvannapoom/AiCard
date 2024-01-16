@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { HiOutlineMinus, HiPlus } from "react-icons/hi";
 
 export default function ProductStandVersion({
@@ -10,9 +11,16 @@ export default function ProductStandVersion({
   imgRight,
   imgFront,
   imgBack,
+  handleSelect,
+  index,
+  select,
 }) {
   return (
-    <div className=" text-[38px] mx-auto flex flex-col justify-center items-center pb-6">
+    <div
+      className={`text-[38px] mx-auto flex flex-col justify-center items-center pb-6
+       
+       `}
+    >
       {imgLeft && (
         <div className="flex col">
           <div>
@@ -57,29 +65,17 @@ export default function ProductStandVersion({
       <p className="text-[60px] mt-4 text-center  from-[#FC904E] via-[#FF3450] to-[#FF00F8] bg-clip-text bg-gradient-to-r text-transparent">
         {price} THB
       </p>
-      <div className="flex gap-8 justify-center pt-3">
-        <div className="h-[100px] w-[100px] bg-[#FC904E] flex justify-center items-center rounded-full">
-          <div
-            className="h-[80px] w-[80px] text-[60px] flex justify-center items-center"
-            onClick={onClickNe}
-          >
-            <HiOutlineMinus />
-          </div>
-        </div>
-        <div className="h-[100px] w-[143px] bg-white flex justify-center items-center rounded-[5px]">
-          <div className="h-[80px] w-[80px] text-[60px] flex justify-center items-center">
-            {amount}
-          </div>
-        </div>
-        <div className="h-[100px] w-[100px] bg-[#FC904E] flex justify-center items-center rounded-full">
-          <div
-            className="h-[80px] w-[80px] text-[60px] flex justify-center items-center"
-            onClick={onClickPlus}
-          >
-            <HiPlus />
-          </div>
-        </div>
-      </div>
+
+      <button
+        className={`uppercase text-white text-6xl p-8 font-bebas-neue font-medium mt-4 rounded-full w-96 ${
+          select === index
+            ? "bg-gray-500"
+            : "bg-gradient-to-r from-orange-400 via-red-500 to-pink-600"
+        }`}
+        onClick={(e) => handleSelect(e, index)}
+      >
+        {select === index ? "Selected" : "Select"}
+      </button>
     </div>
   );
 }

@@ -7,7 +7,7 @@ import QRcodePage from "../pages/QRcodePage";
 import CreditcardPage from "../pages/CreditcardPage";
 import OrdercomPage from "../pages/OrdercomPage";
 import RequestPage from "../pages/RequestPage";
-
+import SuccessPage from "../pages/SuccessPage";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -40,6 +40,10 @@ const router = createBrowserRouter([
   {
     path: "/request_receipt",
     element: <RequestPage />,
+  },
+  {
+    path: "/success",
+    element: <SuccessPage />,
   },
 ]);
 

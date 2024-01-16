@@ -1,24 +1,33 @@
 import { useNavigate } from "react-router-dom";
-import { HiX } from "react-icons/hi";
+
 import HeaderSum from "../../layouts/HeaderSum";
 import SummaryCard from "./SummaryCard";
 import { useProduct } from "../../context/ProductContextProvider";
+import Iframe from "./Iframe";
 
 export default function SummaryContainer() {
   const navigate = useNavigate();
   const { allProduct, handleSendCardList, paymentUrl, setPaymentUrl } =
     useProduct();
-  const { result, totalPrice } = allProduct;
 
+  const { result, totalPrice } = allProduct;
+  const handleClose = () => {
+    setPaymentUrl(null);
+  };
   const cardList = result?.map((el) => {
     const newData = {
       materialID: el.materialID,
       materialName: el.materialName,
       amount: el.amount,
     };
+    return newData;
   }, []);
   return (
-    <div className="w-[2160px] h-[3840px] bg-[#363636] flex flex-col  items-center p-0">
+    <div
+      className={`w-[2160px] h-[3840px] bg-[#363636] flex flex-col  items-center p-0 relative ${
+        paymentUrl ? "" : ""
+      }`}
+    >
       <HeaderSum />
       <SummaryCard result={result} totalPrice={totalPrice} />
       <button
@@ -27,7 +36,6 @@ export default function SummaryContainer() {
             cardList,
             totalPrice: totalPrice.replace(/,/g, ""),
           });
-          navigate("/selectpay");
         }}
         className="uppercase text-white text-[110.194px] pr-[119px] pl-[119px] pt-[4px] font-normal mt-96 rounded-[73px]"
         style={{
@@ -38,6 +46,12 @@ export default function SummaryContainer() {
       >
         NEXT
       </button>
+
+      {paymentUrl && (
+        <div className="flex flex-col justify-center items-center gap-3 absolute z-10 top-[45%] left-[50%] w-full h-[92vh]  rounded-[16px] transform -translate-x-1/2 -translate-y-1/2 p-4 ">
+          <Iframe paymentUrl={paymentUrl} handleClose={handleClose} />
+        </div>
+      )}
     </div>
   );
 }

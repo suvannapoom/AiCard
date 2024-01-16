@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export default function WelcomePage() {
   return (
     <>
-      <div className="w-[2160px] h-[3840px] bg-#292929 flex flex-col items-center">
+      <div className="w-[2160px] h-[3840px] bg-[#292929] flex flex-col items-center">
         <div className=" flex flex-col items-center mt-[280px] mb-[200px]">
           <img src={Logo} alt="Logo" className="" />
           <img src={DigitalB} alt="DigitalB" className="mb-5" />

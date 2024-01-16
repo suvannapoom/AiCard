@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/LogoAi.svg";
 import BackArrow from "../assets/back-arrow2.svg"; // replace with actual path
 
-export default function HeaderSum() {
+export default function HeaderEmail() {
   return (
     <div className="h-[8vh] w-[2160px] bg-[#292929] flex flex-row justify-between items-center  px4 fixed z-10">
       <div className="flex-1">
-        <Link to="/product">
+        <Link to="/ordercomplete">
           <img
             src={BackArrow}
             alt="Back"

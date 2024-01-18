@@ -16,7 +16,7 @@ export default function SummaryContainer() {
     setPaymentUrl,
     isLoading,
   } = useProduct();
-  console.log(setPaymentUrl, "------------------url");
+
   const { result, totalPrice } = allProduct;
   const handleClose = () => {
     setPaymentUrl(null);
@@ -32,6 +32,7 @@ export default function SummaryContainer() {
 
   useEffect(() => {
     const handleMessage = (event) => {
+      console.log(event.data, "event for payment");
       const res =
         "Transaction is completed, please do payment inquiry request for full payment information.";
       if (event.data.paymentResult?.respDesc == res) {

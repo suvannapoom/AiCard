@@ -75,7 +75,7 @@ export default function SummaryContainer() {
         {isLoading && <Loading />}
 
         {paymentUrl && (
-          <div className="flex flex-col justify-center items-center gap-3 absolute z-10 top-[45%] left-[50%] w-full h-[92vh]  rounded-[16px] transform -translate-x-1/2 -translate-y-1/2 p-4 ">
+          <div className="flex flex-col justify-center items-center gap-3 absolute z-10 top-[45%] left-[50%] w-full h-[92vh]  rounded-[16px] transform -translate-x-1/2 -translate-y-1/2 p-4  ">
             <Iframe paymentUrl={paymentUrl} handleClose={handleClose} />
           </div>
         )}

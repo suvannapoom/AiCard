@@ -40,6 +40,7 @@ const RequestContainer = () => {
         </h2>
         <input
           required
+          autoComplete="off"
           value={inputValue}
           onChange={(event) => setInputValue(event.target.value)}
           name={"test2"}

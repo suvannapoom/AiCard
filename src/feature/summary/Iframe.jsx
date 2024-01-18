@@ -3,7 +3,7 @@ export default function Iframe({ paymentUrl, handleClose }) {
   return (
     <div
       className={`w-full h-full flex flex-col justify-center items-center m-[8vh] relative ${
-        paymentUrl ? "backdrop-blur-3xl bg-transparent" : ""
+        paymentUrl ? "backdrop-blur-8xl bg-black bg-opacity-92" : ""
       }`}
     >
       <div

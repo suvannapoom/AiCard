@@ -38,6 +38,7 @@ export default function WelcomePage() {
             BUY NOW
           </Link>
         </div>
+        <div className="flex justify-end items-center h-screen space-x-48"></div>
       </div>
     </>
   );

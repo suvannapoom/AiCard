@@ -9,10 +9,18 @@ import ProductStandVersion from "./ProductStandVersion";
 import { formatPrice } from "../../utils/formatprice";
 import { sumPrice } from "../../utils/sumprice";
 import { useEffect, useState } from "react";
-
+import YouTube from "react-youtube";
 export default function ProductContainer() {
   const navigate = useNavigate();
-
+  const videoId = "r5XYUrigvZw";
+  const opts = {
+    height: "790",
+    width: "1400",
+    playerVars: {
+      autoplay: 1,
+      loop: true,
+    },
+  };
   const {
     stand,
     setStand,
@@ -128,6 +136,7 @@ export default function ProductContainer() {
         </div>
         <div className="flex justify-end items-center h-screen space-x-48">
           {/* <button
+            loading={true}
             className="text-[130px] text-white rounded-[100px] mb-96"
             style={{
               width: "500px",
@@ -141,6 +150,9 @@ export default function ProductContainer() {
           >
             NEXT
           </button> */}
+          <div className="mb-[50px]">
+            <YouTube videoId={videoId} opts={opts} />
+          </div>
         </div>
       </form>
     </div>

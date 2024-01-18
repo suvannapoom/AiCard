@@ -82,22 +82,23 @@ export default function ProductContextProvider({ children }) {
   const [allProduct, setAllProduct] = useState([]);
   const [paymentUrl, setPaymentUrl] = useState(null);
   const [orderNo, setOrderNo] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [isNavigateToProductPageAgin, setIsNavigateToProductPageAgin] =
     useState(false);
 
   const handleSendCardList = async (cardList) => {
     try {
+      setIsLoading(true);
       const res = await paymentService.payment(cardList);
-      console.log(
-        res.data.responsePaymentData.url,
-        "-----------------------res.data.responsePaymentData.url"
-      );
+
       if (res.data.orderNumber) {
         setOrderNo(res.data.orderNumber);
       }
 
-      if (res.data.responsePaymentData.url)
+      if (res.data.responsePaymentData.url) {
+        setIsLoading(false);
         setPaymentUrl(res.data.responsePaymentData.url);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -118,6 +119,7 @@ export default function ProductContextProvider({ children }) {
         orderNo,
         isNavigateToProductPageAgin,
         setIsNavigateToProductPageAgin,
+        isLoading,
       }}
     >
       {children}

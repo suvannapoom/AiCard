@@ -9,5 +9,5 @@ export default function ErrorNavigate() {
     //   }
   }, []);
 
-  return <div>{isLoading && <Loading />}</div>;
+  return <Loading />;
 }

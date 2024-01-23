@@ -18,6 +18,7 @@ export default function SummaryContainer() {
   } = useProduct();
 
   const { result, totalPrice } = allProduct;
+
   const handleClose = () => {
     setPaymentUrl(null);
   };
@@ -59,6 +60,7 @@ export default function SummaryContainer() {
             handleSendCardList({
               cardList,
               totalPrice: totalPrice.replace(/,/g, ""),
+              Trigger: result[0].Trigger,
             });
           }}
           className="uppercase text-white text-[110.194px] pr-[119px] pl-[119px] pt-[4px] font-normal mt-96 rounded-[73px]"

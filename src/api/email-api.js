@@ -1,3 +1,3 @@
 import axios from "./axios";
 
-export const sendEmail = (input) => axios.post("/trigger", input);
+export const sendEmail = (input) => axios.post("/email", input);

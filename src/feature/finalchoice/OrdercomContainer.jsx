@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import success from "../../assets/success.png";
 import { useNavigate } from "react-router-dom";
 import Headerlogo from "../../layouts/Headerlogo";
+import { productTrigger } from "../../api/product";
+import { useProduct } from "../../context/ProductContextProvider";
 
 const OrdercomContainer = () => {
   const navigate = useNavigate();
   const [isNavigateToProductPageAgin, setIsNavigateToProductPageAgin] =
     useState(false);
+  const { trigger } = useProduct();
+
+  useEffect(() => {
+    productTrigger({ Trigger: "p1" });
+  }, []);
 
   return (
     <div className="ordercompletepage">

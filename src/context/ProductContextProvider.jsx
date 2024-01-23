@@ -22,6 +22,7 @@ export const initialStand = [
     price: 1,
     imgFront: card1,
     imgBack: card1,
+    Trigger: "p1",
   },
   {
     id: "2",
@@ -32,6 +33,7 @@ export const initialStand = [
     price: 599,
     imgFront: card2,
     imgBack: card2,
+    Trigger: "p2",
   },
   {
     id: "3",
@@ -42,6 +44,7 @@ export const initialStand = [
     price: 599,
     imgFront: card_pink_f,
     imgBack: card_pink_b,
+    Trigger: "p3",
   },
 ];
 export const initialCustom = [
@@ -85,11 +88,15 @@ export default function ProductContextProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [isNavigateToProductPageAgin, setIsNavigateToProductPageAgin] =
     useState(false);
-
+  const [trigger, setTrigger] = useState(null);
   const handleSendCardList = async (cardList) => {
     try {
       setIsLoading(true);
       const res = await paymentService.payment(cardList);
+      console.log(res, "res---------------*");
+      if (res.data.Trigger) {
+        setTrigger({ Trigger: res.data.Trigger });
+      }
 
       if (res.data.orderNumber) {
         setOrderNo(res.data.orderNumber);

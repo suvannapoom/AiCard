@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
+import Loading from "../../layouts/Loading";
 
 export default function ErrorNavigate() {
   useEffect(() => {
-    window.parent.location.href = "https://ai-card-q.vercel.app/errorpage";
+    // window.parent.location.href = "https://ai-card-q.vercel.app/errorpage";
     //   return () => {
     //     second
     //   }
   }, []);
 
-  return <div>Yoooooooooooooooooooooooooooooooooooooooooooooooooo</div>;
+  return <div>{isLoading && <Loading />}</div>;
 }

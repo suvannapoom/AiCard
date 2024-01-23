@@ -1,7 +1,6 @@
 import SummaryItem from "./SummaryItem";
 
 export default function SummaryCard({ result, totalPrice }) {
-  console.log(result, "--------------------result----");
   return (
     <>
       <div className="mt-[350px] flex flex-col items-center">

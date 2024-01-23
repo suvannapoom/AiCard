@@ -57,10 +57,9 @@ export default function ProductContainer() {
     const newData = [...stand];
     const result = newData.filter((el, i) => select === i);
     if (result.length <= 0) return;
-    // const totalPrice = sumPrice(result);
-    console.log(result);
+
     const formatTotalPrice = formatPrice(result[0].price);
-    console.log(formatTotalPrice);
+
     const productDetail = { result, totalPrice: formatTotalPrice };
 
     setAllProduct(productDetail);

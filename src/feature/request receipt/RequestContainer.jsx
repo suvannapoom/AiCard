@@ -1,11 +1,41 @@
 import React, { useState } from "react";
-
 import HeaderEmail from "../../layouts/HeaderEmail";
 import { useNavigate } from "react-router-dom";
+import { sendEmail } from "../../api/email-api";
+import { useProduct } from "../../context/ProductContextProvider";
 
 const RequestContainer = () => {
   const [inputValue, setInputValue] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const { orderNo } = useProduct();
+
   const navigate = useNavigate();
+
+  const handleInputChange = (event) => {
+    let value = event.target.value;
+
+    const specialCharRegex = /[!#$%^&*()+[\]{};':"\\|,<>/?]/;
+    if (specialCharRegex.test(value)) {
+      value = value.replace(specialCharRegex, "");
+    }
+
+    setInputValue(value);
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(value)) {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
+  };
+  const handleSubmit = () => {
+    const response = sendEmail({
+      email: inputValue,
+      orderNumber: orderNo,
+    });
+    console.log(response, "res for email -------------------------*");
+    navigate("/success");
+  };
   return (
     <div className="w-[2160px] h-[3840px] bg-[#363636] flex flex-col  items-center p-0">
       <HeaderEmail />
@@ -15,10 +45,10 @@ const RequestContainer = () => {
           background:
             "linear-gradient(170deg, rgba(175, 130, 111, 0.50) 1.32%, rgba(81, 81, 81, 0.00) 54.28%, rgba(147, 112, 152, 0.50) 101%)",
           backdropFilter: "blur(5px)",
-          padding: "500px",
+          padding: "100px",
           borderRadius: "50px",
           width: "1700px",
-          height: "1500px",
+          height: "1000px",
           marginTop: "600px",
           display: "flex",
           flexDirection: "column", // Add this line
@@ -42,24 +72,34 @@ const RequestContainer = () => {
           required
           autoComplete="off"
           value={inputValue}
-          onChange={(event) => setInputValue(event.target.value)}
+          onChange={handleInputChange}
           name={"test2"}
           placeholder={"Enter your email here..."}
           style={{
-            marginTop: "50px",
+            marginTop: "100px",
             fontSize: "70px",
             height: "100px",
             width: "1300px",
-            border: "8px solid red",
-            borderRadius: "20px",
+            fontFamily: "-moz-initial",
             padding: "100px",
+            borderColor: emailError ? "red" : "initial",
           }}
         />
+        {emailError && (
+          <div
+            style={{
+              color: "red",
+              marginTop: "50px",
+              fontSize: "80px",
+              fontStyle: "normal",
+            }}
+          >
+            Please enter a valid email.
+          </div>
+        )}
       </div>
       <button
-        onClick={() => {
-          navigate("/success");
-        }}
+        onClick={handleSubmit}
         className="uppercase text-white text-[110.194px] pr-[119px] pl-[119px] pt-[4px] font-normal mt-32 rounded-[73px]"
         style={{
           background:

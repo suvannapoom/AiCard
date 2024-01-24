@@ -12,7 +12,9 @@ const OrdercomContainer = () => {
   const { trigger } = useProduct();
 
   useEffect(() => {
-    productTrigger({ Trigger: trigger.Trigger });
+    if (trigger) {
+      productTrigger({ Trigger: trigger.Trigger });
+    }
   }, []);
 
   return (

@@ -33,7 +33,7 @@ const RequestContainer = () => {
       email: inputValue,
       orderNumber: orderNo,
     });
-    console.log(response, "res for email -------------------------*");
+
     navigate("/success");
   };
   return (

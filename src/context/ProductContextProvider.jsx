@@ -93,8 +93,9 @@ export default function ProductContextProvider({ children }) {
     try {
       setIsLoading(true);
       const res = await paymentService.payment(cardList);
-      console.log(res, "---------------ressssssssssssss");
+
       if (res.data.Trigger) {
+        console.log("trigger ---------111111");
         setTrigger({ Trigger: res.data.Trigger });
       }
 

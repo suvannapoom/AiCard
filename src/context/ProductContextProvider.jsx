@@ -19,7 +19,7 @@ export const initialStand = [
     name: "BLACK CARD STANDARD",
     materialName: "Aicard Original Black",
     amount: 1,
-    price: 1,
+    price: 599,
     imgFront: card1,
     imgBack: card1,
     Trigger: "p1",

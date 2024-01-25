@@ -8,8 +8,9 @@ import CreditcardPage from "../pages/CreditcardPage";
 import OrdercomPage from "../pages/OrdercomPage";
 import RequestPage from "../pages/RequestPage";
 import SuccessPage from "../pages/SuccessPage";
-import ErrorPage from "../pages/ErrorPage";
+
 import ErrorNavigate from "../feature/error/ErrorNavigate";
+import ErrorContainer from "../feature/error/ErrorContainer";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/errorpage",
-    element: <ErrorPage />,
+    element: <ErrorContainer />,
   },
   {
     path: "/error",

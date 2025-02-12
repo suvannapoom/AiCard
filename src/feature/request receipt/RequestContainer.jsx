@@ -5,6 +5,7 @@ import { sendEmail } from "../../api/email-api";
 import { useProduct } from "../../context/ProductContextProvider";
 
 const RequestContainer = () => {
+  const { yoyo } = useProduct();
   const [inputValue, setInputValue] = useState("");
   const [emailError, setEmailError] = useState(false);
   const { orderNo } = useProduct();
@@ -29,11 +30,25 @@ const RequestContainer = () => {
     }
   };
   const handleSubmit = () => {
-    const response = sendEmail({
-      email: inputValue,
-      orderNumber: orderNo,
-    });
+    const product = yoyo.result;
 
+    const saleHistory = JSON.parse(localStorage.getItem("test-sale"));
+
+    if (saleHistory) {
+      saleHistory.push({
+        ...product[0],
+        email: inputValue,
+        date: new Date(),
+      });
+
+      localStorage.setItem("test-sale", JSON.stringify(saleHistory));
+    } else {
+      const newProduct = [
+        { ...product[0], email: inputValue, date: new Date() },
+      ];
+
+      localStorage.setItem("test-sale", JSON.stringify(newProduct));
+    }
     navigate("/success");
   };
   return (

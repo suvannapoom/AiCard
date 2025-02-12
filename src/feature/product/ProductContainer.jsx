@@ -33,6 +33,16 @@ export default function ProductContainer() {
 
   const product = [...stand, ...custom];
   const [select, setSelect] = useState(null);
+  const [cardStock, setCardStock] = useState(null);
+
+  useEffect(() => {
+    const currentStock = JSON.parse(localStorage.getItem("cardStock"));
+
+    if (!currentStock) return;
+
+    setCardStock(currentStock);
+  }, []);
+
   const handleCountStand = (i, check) => {
     if (stand[i].amount <= 0 && check === -1) return;
 
@@ -128,6 +138,7 @@ export default function ProductContainer() {
                   handleSelect={handleSelect}
                   index={i}
                   select={select}
+                  currentStock={cardStock}
                 />
               </div>
             ))}
@@ -149,9 +160,9 @@ export default function ProductContainer() {
           >
             NEXT
           </button> */}
-          <div className="mb-[50px]">
+          {/* <div className="mb-[50px]">
             <YouTube videoId={videoId} opts={opts} />
-          </div>
+          </div> */}
         </div>
       </form>
     </div>

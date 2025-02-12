@@ -6,7 +6,7 @@ export default function HeaderEmail() {
   return (
     <div className="h-[8vh] w-[2160px] bg-[#292929] flex flex-row justify-between items-center  px4 fixed z-10">
       <div className="flex-1">
-        <Link to="/ordercomplete">
+        <Link to="/QRcodepay">
           <img
             src={BackArrow}
             alt="Back"

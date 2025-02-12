@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-
 import HeaderSum from "../../layouts/HeaderSum";
 import SummaryCard from "./SummaryCard";
 import { useProduct } from "../../context/ProductContextProvider";
@@ -22,14 +21,6 @@ export default function SummaryContainer() {
   const handleClose = () => {
     setPaymentUrl(null);
   };
-  const cardList = result?.map((el) => {
-    const newData = {
-      materialID: el.materialID,
-      materialName: el.materialName,
-      amount: el.amount,
-    };
-    return newData;
-  }, []);
 
   useEffect(() => {
     const handleMessage = (event) => {
@@ -58,10 +49,9 @@ export default function SummaryContainer() {
         <button
           onClick={() => {
             handleSendCardList({
-              cardList,
-              totalPrice: totalPrice.replace(/,/g, ""),
-              Trigger: result[0].Trigger,
+              result,
             });
+            navigate("/QRcodepay");
           }}
           className="uppercase text-white text-[110.194px] pr-[119px] pl-[119px] pt-[4px] font-normal mt-96 rounded-[73px]"
           style={{
@@ -72,14 +62,13 @@ export default function SummaryContainer() {
         >
           PAY NOW
         </button>
-
-        {isLoading && <Loading />}
+        {/* {isLoading && <Loading />}
 
         {paymentUrl && (
           <div className="flex flex-col justify-center items-center gap-3 absolute z-10 top-[45%] left-[50%] w-full h-[92vh]  rounded-[16px] transform -translate-x-1/2 -translate-y-1/2 p-4  ">
             <Iframe paymentUrl={paymentUrl} handleClose={handleClose} />
           </div>
-        )}
+        )} */}
       </div>
     </>
   );

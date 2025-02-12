@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import card1 from "../assets/card1.png";
 import card2 from "../assets/card2.png";
 import card_pink_b from "../assets/card_pink_b.png";
@@ -12,6 +12,7 @@ import card62 from "../assets/card62.png";
 import * as paymentService from "../api/payment-api";
 
 const ProductContext = createContext();
+
 export const initialStand = [
   {
     id: "1",
@@ -19,7 +20,7 @@ export const initialStand = [
     name: "BLACK CARD STANDARD",
     materialName: "Aicard Original Black",
     amount: 1,
-    price: 1,
+    price: 599,
     imgFront: card1,
     imgBack: card1,
     Trigger: "p1",
@@ -89,28 +90,15 @@ export default function ProductContextProvider({ children }) {
   const [isNavigateToProductPageAgin, setIsNavigateToProductPageAgin] =
     useState(false);
   const [trigger, setTrigger] = useState(null);
-  const handleSendCardList = async (cardList) => {
-    try {
-      setIsLoading(true);
-      const res = await paymentService.payment(cardList);
-
-      if (res.data.Trigger) {
-        console.log("trigger ---------111111");
-        setTrigger({ Trigger: res.data.Trigger });
-      }
-
-      if (res.data.orderNumber) {
-        setOrderNo(res.data.orderNumber);
-      }
-
-      if (res.data.responsePaymentData.url) {
-        setIsLoading(false);
-        setPaymentUrl(res.data.responsePaymentData.url);
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const [yoyo, setYoyo] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const handleSendCardList = (cardList) => {
+    setYoyo(cardList);
   };
+
+  useEffect(() => {
+    setIsAdmin(true);
+  }, []);
 
   return (
     <ProductContext.Provider
@@ -129,6 +117,9 @@ export default function ProductContextProvider({ children }) {
         setIsNavigateToProductPageAgin,
         isLoading,
         trigger,
+        yoyo,
+        isAdmin,
+        setIsAdmin,
       }}
     >
       {children}

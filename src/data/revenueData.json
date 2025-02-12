@@ -1,0 +1,74 @@
+[
+  {
+    "label": "Jan",
+    "black": 50,
+    "white": 60,
+    "pink": 10
+  },
+  {
+    "label": "Feb",
+    "black": 62,
+    "white": 42,
+    "pink": 20
+  },
+  {
+    "label": "Mar",
+    "black": 72,
+    "white": 50,
+    "pink": 30
+  },
+  {
+    "label": "Apr",
+    "black": 60,
+    "white": 73,
+    "pink": 40
+  },
+  {
+    "label": "May",
+    "black": 91,
+    "white": 89,
+    "pink": 50
+  },
+  {
+    "label": "Jun",
+    "black": 60,
+    "white": 83,
+    "pink": 60
+  },
+  {
+    "label": "Jul",
+    "black": 74,
+    "white": 47,
+    "pink": 70
+  },
+  {
+    "label": "Aug",
+    "black": 82,
+    "white": 37,
+    "pink": 80
+  },
+  {
+    "label": "Sep",
+    "black": 62,
+    "white": 49,
+    "pink": 90
+  },
+  {
+    "label": "Oct",
+    "black": 52,
+    "white": 53,
+    "pink": 100
+  },
+  {
+    "label": "Nov",
+    "black": 69,
+    "white": 47,
+    "pink": 110
+  },
+  {
+    "label": "Dec",
+    "black": 43,
+    "white": 75,
+    "pink": 120
+  }
+]

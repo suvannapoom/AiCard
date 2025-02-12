@@ -4,6 +4,7 @@ import ContactInstantly from "../assets/ContactInstantly.svg";
 import DigitalB from "../assets/DigitalB.svg";
 import Allcard from "../assets/all_card.png";
 import { Link } from "react-router-dom";
+import { BsFillWrenchAdjustableCircleFill } from "react-icons/bs";
 
 export default function WelcomePage() {
   return (
@@ -38,7 +39,14 @@ export default function WelcomePage() {
             BUY NOW
           </Link>
         </div>
-        <div className="flex justify-end items-center h-screen space-x-48"></div>
+        <div className="flex justify-end items-center h-screen space-x-48 ml-[1600px]">
+          <Link
+            to="/loginadmin"
+            className="flex items-center justify-center bg-orange-500 text-white w-32 h-32 rounded-full "
+          >
+            <BsFillWrenchAdjustableCircleFill size={80} />
+          </Link>
+        </div>
       </div>
     </>
   );

@@ -13,6 +13,7 @@ export default function ProductStandVersion({
   handleSelect,
   index,
   select,
+  currentStock,
 }) {
   const navigate = useNavigate();
 
@@ -20,6 +21,16 @@ export default function ProductStandVersion({
   //   handleSelect(index);
   //   navigate("/summary");
   // };
+
+  const disabledCard = () => {
+    if (index === 0) {
+      return !currentStock?.blackCard;
+    } else if (index === 1) {
+      return !currentStock?.whiteCard;
+    } else {
+      return !currentStock?.pinkCard;
+    }
+  };
 
   return (
     <div
@@ -74,15 +85,22 @@ export default function ProductStandVersion({
 
       <button
         className={`uppercase text-white text-6xl p-8 font-bebas-neue font-medium mt-4 rounded-full w-96 ${
-          select === index
+          disabledCard()
+            ? "bg-gray-600 border-white border-2"
+            : select === index
             ? "bg-gray-500"
             : "bg-gradient-to-r from-orange-400 via-red-500 to-pink-600"
         }`}
         onClick={(e) => {
           handleSelect(e, index);
         }}
+        disabled={disabledCard()}
       >
-        {select === index ? "Selected" : "Select"}
+        {disabledCard()
+          ? "Out of Stock"
+          : select === index
+          ? "Selected"
+          : "Select"}
       </button>
     </div>
   );

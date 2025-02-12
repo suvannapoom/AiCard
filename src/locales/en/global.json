@@ -1,0 +1,36 @@
+{
+  "slidebar": {
+    "dashboard": "Dashboard",
+    "data": "Data Table",
+    "products": "Products",
+    "sign out": "Sign Out"
+  },
+  "bell": {
+    "warning:": "Warning!"
+  },
+  "dashboard": {
+    "main dashboard": "Main Dashboard",
+    "Annual sales": "Annual sales",
+    "Bar": "Total sales this month in Bar Chart",
+    "Pie": "Total sales this month in Pie Charts"
+  },
+  "table": {
+    "transactions": "Customer transactions",
+    "Product": "Product",
+    "Price": "Price",
+    "Email": "Email",
+    "Time": "Time"
+  },
+  "storage": {
+    "black": "black card",
+    "white": "white card",
+    "pink": "pink card",
+    "out": "Warning: out of stock",
+    "low": "Warning: Low stock, please replenish.",
+    "manage": "Manage stock",
+    "submit": "Submit",
+    "update": "Update history",
+    "last": "Last Updated",
+    "export": "Export to Excel"
+  }
+}
